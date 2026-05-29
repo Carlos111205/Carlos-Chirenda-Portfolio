@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>{% block title %}Carlos Chirenda | Aspiring Software Engineer & NUST Student{% endblock %}</title>
+    <meta name="description" content="Personal portfolio of Carlos Chirenda, Computer Science student at NUST & aspiring Software Engineer. Bridging IoT, hardware, cloud, and mobile app development with high security.">
+    <meta name="keywords" content="Carlos Chirenda, Portfolio, Software Engineer, NUST, Computer Science, IoT, Flask, Django, Cybersecurity, Python Developer, Zimbabwe">
+    <meta name="author" content="Carlos Chirenda">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Carlos Chirenda | Personal Portfolio">
+    <meta property="og:description" content="Bridging hardware, cloud, and user-facing apps with a focus on data-driven solutions and security.">
+    <meta property="og:image" content="{{ url_for('static', filename='img/portfolio_preview.jpg') }}">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Carlos Chirenda | Personal Portfolio">
+    <meta property="twitter:description" content="Bridging hardware, cloud, and user-facing apps with a focus on data-driven solutions and security.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="main-header" id="header">
+        <div class="container navbar-container">
+            <a href="{{ url_for('index') }}#home" class="logo">
+                <span class="logo-accent">&lt;</span>CarlosChirenda<span class="logo-accent"> /&gt;</span>
+            </a>
+            
+            <!-- Desktop Navigation Links -->
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="{{ url_for('index') }}#home" class="nav-link">Home</a></li>
+                    <li><a href="{{ url_for('index') }}#about" class="nav-link">About</a></li>
+                    <li><a href="{{ url_for('index') }}#tech-stack" class="nav-link">Skills</a></li>
+                    <li><a href="{{ url_for('index') }}#projects" class="nav-link">Projects</a></li>
+                    <li><a href="{{ url_for('index') }}#certifications" class="nav-link">Certifications</a></li>
+                    <li><a href="{{ url_for('index') }}#contact" class="nav-link btn btn-nav">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Mobile Menu Toggle Button -->
+            <button class="mobile-menu-toggle" id="menu-toggle" aria-label="Toggle Navigation Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="mobile-nav-overlay" id="mobile-nav">
+        <nav class="mobile-nav-menu">
+            <ul>
+                <li><a href="{{ url_for('index') }}#home" class="mobile-nav-link">Home</a></li>
+                <li><a href="{{ url_for('index') }}#about" class="mobile-nav-link">About</a></li>
+                <li><a href="{{ url_for('index') }}#tech-stack" class="mobile-nav-link">Skills</a></li>
+                <li><a href="{{ url_for('index') }}#projects" class="mobile-nav-link">Projects</a></li>
+                <li><a href="{{ url_for('index') }}#certifications" class="mobile-nav-link">Certifications</a></li>
+                <li><a href="{{ url_for('index') }}#contact" class="mobile-nav-link btn-mobile-nav">Contact Me</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Toast Notifications Container for Forms/Status Messages -->
+    <div class="toast-container" id="toast-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="toast toast-{{ category }} fade-in">
+                        <div class="toast-content">
+                            <i class="fa-solid {% if category == 'success' %}fa-circle-check{% else %}fa-triangle-exclamation{% endif %} toast-icon"></i>
+                            <span class="toast-message">{{ message }}</span>
+                        </div>
+                        <button class="toast-close" onclick="this.parentElement.remove()">&times;</button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <!-- Main Content Injection Block -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <a href="{{ url_for('index') }}#home" class="footer-logo">
+                    <span class="logo-accent">&lt;</span>CarlosChirenda<span class="logo-accent"> /&gt;</span>
+                </a>
+                <p>Computer Science Student & Aspiring Software Engineer. Bridging the gap between software execution, secure architectures, and hardware efficiency.</p>
+            </div>
+            
+            <div class="footer-links-group">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="{{ url_for('index') }}#home">Home</a></li>
+                    <li><a href="{{ url_for('index') }}#about">About</a></li>
+                    <li><a href="{{ url_for('index') }}#tech-stack">Skills</a></li>
+                    <li><a href="{{ url_for('index') }}#projects">Projects</a></li>
+                    <li><a href="{{ url_for('index') }}#certifications">Credentials</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-socials-group">
+                <h3>Connect With Me</h3>
+                <div class="social-icons">
+                    <a href="https://linkedin.com/in/carlos-chirenda-10b641270" target="_blank" rel="noopener noreferrer" class="social-icon-btn linkedin" aria-label="LinkedIn Profile">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/Carlos111205" target="_blank" rel="noopener noreferrer" class="social-icon-btn github" aria-label="GitHub Profile">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a href="mailto:carloschirenda@gmail.com" class="social-icon-btn email" aria-label="Email Me">
+                        <i class="fa-solid fa-envelope"></i>
+                    </a>
+                </div>
+                <div class="open-status-footer">
+                    <span class="pulse-dot green"></span>
+                    <span>Seeking Internship (2026 Cycle)</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <p>&copy; {{ 2026 }} Carlos Chirenda. All rights reserved.</p>
+                <p class="tech-badge">Powered by <a href="https://flask.palletsprojects.com/" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-fire-flame-curved text-orange"></i> Flask</a> & CSS Grid</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JS Scripts -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

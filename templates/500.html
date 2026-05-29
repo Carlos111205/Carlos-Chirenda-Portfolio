@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Server Error | Carlos Chirenda{% endblock %}
+
+{% block content %}
+<section class="section error-page-section">
+    <div class="container text-center">
+        <div class="error-card glass-card fade-in-up">
+            <div class="error-code gradient-text">500</div>
+            <h2 class="error-title">Internal Server Error</h2>
+            <p class="error-message">Something went wrong on our end. Please try again later or contact me directly if the problem persists.</p>
+            <a href="{{ url_for('index') }}#home" class="btn btn-primary">
+                <i class="fa-solid fa-house"></i> Return Home
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

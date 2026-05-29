@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Page Not Found | Carlos Chirenda{% endblock %}
+
+{% block content %}
+<section class="section error-page-section">
+    <div class="container text-center">
+        <div class="error-card glass-card fade-in-up">
+            <div class="error-code gradient-text">404</div>
+            <h2 class="error-title">Page Not Found</h2>
+            <p class="error-message">Oops! The page you are looking for does not exist, has been removed, or is temporarily unavailable.</p>
+            <a href="{{ url_for('index') }}#home" class="btn btn-primary">
+                <i class="fa-solid fa-house"></i> Return Home
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
